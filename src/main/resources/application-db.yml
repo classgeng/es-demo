@@ -1,0 +1,33 @@
+db:
+  type: dm
+  name: ajk0816
+  # pg数据库必填，mysql可不填
+  schema: MSDM
+spring:
+  datasource:
+    # driver-class-name: com.mysql.jdbc.Driver
+    # url: jdbc:mysql://127.0.0.1:3306/${db.name}?useSSL=false&useUnicode=true&characterEncoding=utf-8
+    # username: root
+    # password: root
+    #driver-class-name: org.postgresql.Driver
+    #url: jdbc:postgresql://postgres.base.svc.cluster.local:5432/${db.name}?currentSchema=${db.schema}
+    #username: postgres
+    #password: postgres
+    driver-class-name: dm.jdbc.driver.DmDriver
+    url: jdbc:dm://127.0.0.1:5236/${db.schema}?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+    username: SYSDBA
+    password: 123456789
+  druid:
+    initialSize: 5
+    minIdle: 5
+    maxWait: 60000
+    maxActive: 20
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+
